@@ -1,0 +1,99 @@
+<?php
+
+/**
+ * @file
+ * Custom module for alteration and override drupal.
+ */
+
+use Drupal\Core\Url;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Cache\RefinableCacheableDependencyInterface;
+use Drupal\views\Views;
+use Drupal\file\Entity\File;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\node\Entity\Node;
+use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Ajax\InvokeCommand;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Drupal\Core\File\FileSystemInterface;
+use Drupal\image\Entity\ImageStyle;
+use Drupal\taxonomy\Entity\Term;
+use Drupal\Core\Ajax\ReplaceCommand;
+use Drupal\user\UserInterface;
+/**
+ * Submit handler for submit variant form.
+ */
+
+function user_module_user_presave(Drupal\Core\Entity\EntityInterface $entity) {
+ if($entity->isNew()) {
+   $entity->addRole('employee');
+ }
+}
+
+/**
+ * Add customers table relationship.
+ */
+function user_module_views_data_alter(array &$data) {
+  $data['punch_time']['just_put_something_here'] = [
+    'title' => t('Punch Table Relationship to User'),
+    'relationship' => [
+      'base' => 'users_field_data',
+      'base field' => 'uid',
+      'field' => 'user_id',
+      'id' => 'standard',
+      'label' => t('User Table Relationship'),
+    ],
+  ];
+  
+
+}
+
+/**
+ * Implements hook_theme().
+ */
+function user_module_theme() {
+  // Add order detail theme.
+  $theme['admin_list_attendance'] = [
+    'variables' => ['order_id' => NULL, 'data' => []],
+    'template' => 'admin_list_attendance',
+  ];
+  // Add order detail theme.
+  $theme['my_attendance'] = [
+    'variables' => ['order_id' => NULL, 'data' => []],
+    'template' => 'my_attendance',
+  ];
+
+  return $theme;
+}
+
+
+
+
+/**
+ * Implements hook_page_attachments().
+ */
+function user_module_page_attachments(array &$page) {
+ // $page['#attached']['drupalSettings']['api_url'] = api_url;
+ // $page['#attached']['drupalSettings']['api_Authorization'] = api_Authorization;
+  $page['#attached']['drupalSettings']['login'] = \Drupal::currentUser()->id();
+}
+
+/**
+ * Implements hook_views_query_alter().
+ */
+function user_module_views_query_alter(Drupal\views\ViewExecutable $view, Drupal\views\Plugin\views\query\Sql  $query) {
+  switch($view->storage->id()){
+    case 'product_filter_api_test';
+
+  //$query->addField(NULL, 'paragraphs_item_field_data_node__field_ex_showroom_city__paragraph__field_price.field_price_value', '', ['function' => 'sum']);
+   // $query->addGroupBy('node_field_data.nid');
+   
+  // $query->addField('node_field_data', 'nid', '', ['function' => 'groupby']);
+  //  $query->addGroupBy('node_field_data.nid');
+   // $query->addField('node', 'nid', 'node_nid', array('function' => 'groupby'));
+//Distinct = TRUE -used to avoid unnecessary groupby conditions
+$query->distinct=TRUE;
+    break;
+  }
+}

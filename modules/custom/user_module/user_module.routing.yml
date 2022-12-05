@@ -1,0 +1,57 @@
+user_module.punch_form:
+  path: '/attendance/punch'
+  defaults:
+    _form: '\Drupal\user_module\Form\PunchForm'
+    _title: 'Attendance Mark'
+  requirements:
+    _permission: 'employee Access'
+
+user_module.reg_form:
+  path: '/regularize/punch/{date}'
+  defaults:
+    _form: '\Drupal\user_module\Form\RegForm'
+    _title: 'Regularize'
+    _title_callback: '\Drupal\user_module\Form\RegForm::getTitle'
+  requirements:
+    _permission: 'employee Access'
+
+user_module.admin_reg_accept:
+  path: '/admin/regularization-requests/{id}'
+  defaults:
+    _controller: Drupal\user_module\Controller\AttendanceController::admin_reg_accept
+  methods: ['GET']
+  requirements:
+    _user_is_logged_in: 'TRUE'
+    _permission: 'admin custom module'
+
+user_module.admin_attendance:
+  path: /restapi/admin/attendance
+  defaults:
+    _controller: Drupal\user_module\Controller\AttendanceController::admin_attendance
+  methods: ['GET']
+  requirements:
+    _user_is_logged_in: 'TRUE'
+    _permission: 'admin custom module'
+
+user_module.get_attendance:
+  path: /restapi/attendance
+  defaults:
+    _controller: Drupal\user_module\Controller\AttendanceController::get_attendance
+  methods: ['GET']
+  requirements:
+    _user_is_logged_in: 'TRUE'
+    _permission: 'employee Access'
+
+user_module.admin_list_attendance:
+  path: /admin/attendance
+  defaults:
+    _controller: Drupal\user_module\Controller\AttendanceController::admin_list_attendance
+  requirements:
+    _permission: 'admin custom module'
+
+user_module.list_attendance:
+  path: /my/attendance
+  defaults:
+    _controller: Drupal\user_module\Controller\AttendanceController::my_attendance
+  requirements:
+    _permission: 'employee Access'
