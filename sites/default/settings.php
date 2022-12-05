@@ -799,7 +799,7 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
 # if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
 #   include $app_root . '/' . $site_path . '/settings.local.php';
 # }
-$databases['default']['default'] = array (
+/*$databases['default']['default'] = array (
   'database' => 'drupal_hrms',
   'username' => 'root',
   'password' => 'admin',
@@ -809,9 +809,9 @@ $databases['default']['default'] = array (
   'namespace' => 'Drupal\\mysql\\Driver\\Database\\mysql',
   'driver' => 'mysql',
   'autoload' => 'core/modules/mysql/src/Driver/Database/mysql/',
-);
+);*/
 
-/*$databases['default']['default'] = array (
+$databases['default']['default'] = array (
   'database' => 'ankitver_drupalhrms',
   'username' => 'ankitver_drupal',
   'password' => '8y{a(o-IrhQ~',
@@ -821,7 +821,7 @@ $databases['default']['default'] = array (
   'namespace' => 'Drupal\\mysql\\Driver\\Database\\mysql',
   'driver' => 'mysql',
   'autoload' => 'core/modules/mysql/src/Driver/Database/mysql/',
-);*/
+);
 $settings['config_sync_directory'] = 'sites/default/files/config_Uzz3RuwIB4eYko7K9ZpfepCooj3gwwYaFj_Idcc2zwQW1jBVZq2s0jzhXoUDGef9jB9LeK6JnA/sync';
 
 
