@@ -16,12 +16,10 @@ user_module.reg_form:
     _permission: 'employee Access'
 
 user_module.admin_reg_accept:
-  path: '/admin/regularization-requests/{id}'
+  path: '/admin/regularization-requests/{pid}'
   defaults:
-    _controller: Drupal\user_module\Controller\AttendanceController::admin_reg_accept
-  methods: ['GET']
+    _controller: 'Drupal\user_module\Controller\AttendanceController::admin_reg_accept'
   requirements:
-    _user_is_logged_in: 'TRUE'
     _permission: 'admin custom module'
 
 user_module.admin_attendance:

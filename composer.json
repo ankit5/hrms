@@ -22,6 +22,8 @@
         "drupal/core-project-message": "^9.4",
         "drupal/core-recommended": "^9.4",
         "drupal/core-vendor-hardening": "^9.4",
+        "drupal/feeds": "^3.0@beta",
+        "drupal/feeds_tamper": "^2.0@beta",
         "drupal/fontawesome": "2.24",
         "drupal/fontawesome_menu_icons": "1.9",
         "drupal/time_picker": "5.3",
@@ -35,8 +37,8 @@
     "conflict": {
         "drupal/drupal": "*"
     },
-    "minimum-stability": "stable",
-    "prefer-stable": true,
+    "minimum-stability": "dev",
+    "prefer-stable": false,
     "config": {
         "allow-plugins": {
             "composer/installers": true,

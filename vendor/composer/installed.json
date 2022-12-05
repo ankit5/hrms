@@ -1818,6 +1818,196 @@
             "install-path": "../drupal/core-vendor-hardening"
         },
         {
+            "name": "drupal/feeds",
+            "version": "3.0.0-beta2",
+            "version_normalized": "3.0.0.0-beta2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/feeds.git",
+                "reference": "8.x-3.0-beta2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/feeds-8.x-3.0-beta2.zip",
+                "reference": "8.x-3.0-beta2",
+                "shasum": "7b18b24bfebdce90a62606b36dd8975d6eb862c8"
+            },
+            "require": {
+                "drupal/core": "^8.9 || ^9"
+            },
+            "require-dev": {
+                "drupal/pathauto": "^1.8",
+                "drush/drush": "^9 || ^10"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-3.0-beta2",
+                    "datestamp": "1657972705",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                },
+                "drush": {
+                    "services": {
+                        "drush.services.yml": "^9 || ^10 || ^11"
+                    }
+                }
+            },
+            "installation-source": "dist",
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "alex_b",
+                    "homepage": "https://www.drupal.org/user/53995"
+                },
+                {
+                    "name": "Dave Reid",
+                    "homepage": "https://www.drupal.org/user/53892"
+                },
+                {
+                    "name": "e2thex",
+                    "homepage": "https://www.drupal.org/user/189123"
+                },
+                {
+                    "name": "febbraro",
+                    "homepage": "https://www.drupal.org/user/43670"
+                },
+                {
+                    "name": "franz",
+                    "homepage": "https://www.drupal.org/user/581844"
+                },
+                {
+                    "name": "Ian Ward",
+                    "homepage": "https://www.drupal.org/user/4736"
+                },
+                {
+                    "name": "jmiccolis",
+                    "homepage": "https://www.drupal.org/user/31731"
+                },
+                {
+                    "name": "joelpittet",
+                    "homepage": "https://www.drupal.org/user/160302"
+                },
+                {
+                    "name": "kking",
+                    "homepage": "https://www.drupal.org/user/24399"
+                },
+                {
+                    "name": "MegaChriz",
+                    "homepage": "https://www.drupal.org/user/654114"
+                },
+                {
+                    "name": "tobby",
+                    "homepage": "https://www.drupal.org/user/154797"
+                },
+                {
+                    "name": "tristanoneil",
+                    "homepage": "https://www.drupal.org/user/340659"
+                },
+                {
+                    "name": "twistor",
+                    "homepage": "https://www.drupal.org/user/473738"
+                },
+                {
+                    "name": "Will White",
+                    "homepage": "https://www.drupal.org/user/32237"
+                },
+                {
+                    "name": "yhahn",
+                    "homepage": "https://www.drupal.org/user/264833"
+                }
+            ],
+            "description": "Aggregates RSS/Atom/RDF feeds, imports CSV files and more.",
+            "homepage": "https://www.drupal.org/project/feeds",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "https://git.drupalcode.org/project/feeds",
+                "issues": "https://www.drupal.org/project/issues/feeds"
+            },
+            "install-path": "../../modules/contrib/feeds"
+        },
+        {
+            "name": "drupal/feeds_tamper",
+            "version": "2.0.0-beta2",
+            "version_normalized": "2.0.0.0-beta2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/feeds_tamper.git",
+                "reference": "8.x-2.0-beta2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/feeds_tamper-8.x-2.0-beta2.zip",
+                "reference": "8.x-2.0-beta2",
+                "shasum": "969075b8a3fd702dfbfd219fd507d3aa166f919d"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9",
+                "drupal/feeds": "~3.0",
+                "drupal/tamper": "~1.0"
+            },
+            "require-dev": {
+                "drupal/feeds": "3.x-dev"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-2.0-beta2",
+                    "datestamp": "1591295714",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Beta releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "installation-source": "dist",
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "franz",
+                    "homepage": "https://www.drupal.org/user/581844"
+                },
+                {
+                    "name": "Honza Pobořil",
+                    "homepage": "https://www.drupal.org/user/123612"
+                },
+                {
+                    "name": "mausolos",
+                    "homepage": "https://www.drupal.org/user/642118"
+                },
+                {
+                    "name": "MegaChriz",
+                    "homepage": "https://www.drupal.org/user/654114"
+                },
+                {
+                    "name": "twistor",
+                    "homepage": "https://www.drupal.org/user/473738"
+                }
+            ],
+            "description": "Modify feeds data before it gets saved.",
+            "homepage": "http://drupal.org/project/feeds_tamper",
+            "keywords": [
+                "Drupal",
+                "feeds",
+                "tamper"
+            ],
+            "support": {
+                "source": "http://cgit.drupalcode.org/feeds_tamper",
+                "issues": "http://drupal.org/project/issues/feeds_tamper"
+            },
+            "install-path": "../../modules/contrib/feeds_tamper"
+        },
+        {
             "name": "drupal/fontawesome",
             "version": "2.24.0",
             "version_normalized": "2.24.0.0",
@@ -2209,6 +2399,67 @@
                 "issues": "https://www.drupal.org/project/issues/jquery_ui_touch_punch"
             },
             "install-path": "../../modules/contrib/jquery_ui_touch_punch"
+        },
+        {
+            "name": "drupal/tamper",
+            "version": "dev-1.x",
+            "version_normalized": "dev-1.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/tamper.git",
+                "reference": "cbce28b6595215795db4eb8ae2f59fb61e9811c0"
+            },
+            "require": {
+                "drupal/core": "^8.8 || ^9 || ^10"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0-alpha2+12-dev",
+                    "datestamp": "1669466124",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "installation-source": "source",
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "ericgsmith",
+                    "homepage": "https://www.drupal.org/user/1649952"
+                },
+                {
+                    "name": "jamesdixon",
+                    "homepage": "https://www.drupal.org/user/762570"
+                },
+                {
+                    "name": "MegaChriz",
+                    "homepage": "https://www.drupal.org/user/654114"
+                },
+                {
+                    "name": "twistor",
+                    "homepage": "https://www.drupal.org/user/473738"
+                }
+            ],
+            "description": "Generic plugin to modify data.",
+            "homepage": "https://www.drupal.org/project/tamper",
+            "keywords": [
+                "Drupal",
+                "tamper"
+            ],
+            "support": {
+                "source": "http://cgit.drupalcode.org/tamper",
+                "issues": "http://drupal.org/project/issues/tamper"
+            },
+            "install-path": "../../modules/contrib/tamper"
         },
         {
             "name": "drupal/time_picker",

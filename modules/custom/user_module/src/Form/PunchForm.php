@@ -67,10 +67,13 @@ class PunchForm extends FormBase {
       $check_date = date('Y-m-d', time())." 00:00:00";
       $select = $database->query("SELECT * from punch_time where punch_time = '".$check_date."' and user_id='".$uid."' ");
       $select->allowRowCount = TRUE;
+      $current_time = \Drupal::time()->getCurrentTime();
+      $date_current = date('Y-m-d', $current_time);
+       
       if($select->rowCount()>0){
        $punch_updated = $database->update('punch_time')
   ->fields([
-    'punch_time' => date('Y-m-d\TH:i:s', time()),
+    'punch_time' => date('Y-m-d\TH:i:s', $current_time),
   ])
   ->condition('punch_time', $check_date, '=')
   ->condition('user_id', $uid, '=')
@@ -79,7 +82,7 @@ class PunchForm extends FormBase {
      $punch_add = $database->insert('punch_time')
         ->fields([
             'user_id' => \Drupal::currentUser()->id(),
-            'punch_time' => date('Y-m-d\TH:i:s', time()),
+            'punch_time' => date('Y-m-d\TH:i:s', $current_time),
           ])
         ->execute();
       }

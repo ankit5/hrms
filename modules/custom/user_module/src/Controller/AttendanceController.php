@@ -123,9 +123,19 @@ GROUP BY punchDate, e.uid, name, empid
 ".$order."
 ");  
     $result = $query->fetchAll();
+    $current_time = \Drupal::time()->getCurrentTime();
+      $date_current = date('Y-m-d', $current_time);
+      $status='';
     foreach ($result as $key => $value) {
-        
+        if($value->punchDate==$date_current){
+        $status = '<p class="w">Wait</p>';
+        }elseif ($value->OutTime==null) {
+        $status = '<p class="a">Absent</p>';
+       }else{
+        $status = '<p class="p">Present</p>';
+       }
         $result[$key]->name = $value->name;
+        $result[$key]->status = $status;
 
     }
 /*print "<pre>";
@@ -137,10 +147,13 @@ $count = $query->rowCount();
 if(isset($_REQUEST['draw'])){
 
 }
+
+
 $json_data = array( 
  "draw"            => intval( $_REQUEST['draw'] ),  
  "recordsTotal"    => intval($count),  
  "recordsFiltered" => intval($count),
+ "options" => $options,
  "data"            => $result   // total data array
  );
 
@@ -155,6 +168,12 @@ public function admin_list_attendance(){
 
 	 return [
         '#theme' => 'admin_list_attendance',
+        '#attached' => [
+          'library' => [
+            'user_module/drupal_js',
+            'user_module/user_module_css',
+          ],
+        ],
       ];
 }
 
@@ -168,12 +187,13 @@ public function my_attendance(){
         '#attached' => [
           'library' => [
             'user_module/drupal_js',
+            'user_module/user_module_css',
           ],
         ],
       ];
 }
 
-public function admin_reg_accept($id){
+public function admin_reg_accept($pid){
  $database = \Drupal::database();
 $uid = \Drupal::currentUser()->id(); 
     
@@ -183,12 +203,13 @@ $uid = \Drupal::currentUser()->id();
   ->fields([
     'punch_status' => 1,
   ])
-  ->condition('id', $id, '=')
+  ->condition('id', $pid, '=')
   ->execute();
   \Drupal::messenger()->addStatus('Accecp Succesfully');
       
       $response = new RedirectResponse($url->toString());
       $response->send();
+      exit();
 }
 
 }
