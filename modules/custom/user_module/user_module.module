@@ -32,6 +32,72 @@ function user_module_user_presave(Drupal\Core\Entity\EntityInterface $entity) {
 }
 
 /**
+ * Implements hook_form_alter().
+ */
+function user_module_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+
+
+  if ($form_id == 'node_attendance_form') {
+
+  //  $form['title']['widget'][0]['value']['#value'] = 'The default title';
+  $form['#validate'][] = '_form_validation_attendance';
+   
+  }
+}
+
+/**
+ * Validation handler for submit message form.
+ */
+function _form_validation_attendance(&$form, FormStateInterface $form_state) 
+{
+  $current_user = \Drupal::currentUser();
+
+$uid = $current_user->id();
+
+$date = $form_state->getValue('field_punch_date')[0]['value'];
+$database = \Drupal::database();
+$results = $database->query("SELECT node_field_data.created AS node_field_data_created, node_field_data.nid AS nid, users_field_data_node_field_data.uid AS users_field_data_node_field_data_uid
+FROM
+{node_field_data} node_field_data
+INNER JOIN {users_field_data} users_field_data_node_field_data ON node_field_data.uid = users_field_data_node_field_data.uid
+LEFT JOIN {node__field_punch_date} node__field_punch_date ON node_field_data.nid = node__field_punch_date.entity_id AND node__field_punch_date.deleted = '0'
+WHERE (node_field_data.status = '1') AND (node_field_data.type IN ('attendance')) AND (users_field_data_node_field_data.uid IN ('$uid')) AND ((DATE_FORMAT(node__field_punch_date.field_punch_date_value, '%Y-%m-%d') = DATE_FORMAT('$date', '%Y-%m-%d')))
+ORDER BY node_field_data_created DESC
+LIMIT 1 OFFSET 0")->fetchObject();
+   if (isset($results->nid)) {
+      $form_state->setErrorByName('field_punch_date', t('This Date Attendance Already Added.'));  
+    }
+    
+       
+}
+
+
+/**
+ * Implements hook_entity_presave().
+ */
+function user_module_entity_presave(Drupal\Core\Entity\EntityInterface $entity) {
+  switch ($entity->bundle()) {
+    // Here you modify only your day content type
+    case 'attendance':
+
+$current_user = \Drupal::currentUser();
+
+$uid = $current_user->id();
+
+$user_mail = $current_user->getDisplayName();
+      // Setting the title with the value of field_date.
+      $entity->setTitle($user_mail. "-".$entity->get('field_punch_date')->value);
+     break;
+  }
+}
+
+ 
+
+
+
+
+
+/**
  * Add customers table relationship.
  */
 function user_module_views_data_alter(array &$data) {
@@ -43,6 +109,17 @@ function user_module_views_data_alter(array &$data) {
       'field' => 'user_id',
       'id' => 'standard',
       'label' => t('User Table Relationship'),
+    ],
+  ];
+
+  $data['leave_details']['leave_type_re'] = [
+    'title' => t('leave_type Relationship to User'),
+    'relationship' => [
+      'base' => 'taxonomy_term_field_data',
+      'base field' => 'tid',
+      'field' => 'type_id',
+      'id' => 'standard',
+      'label' => t('leave_type Table Relationship'),
     ],
   ];
   
@@ -94,6 +171,13 @@ function user_module_views_query_alter(Drupal\views\ViewExecutable $view, Drupal
    // $query->addField('node', 'nid', 'node_nid', array('function' => 'groupby'));
 //Distinct = TRUE -used to avoid unnecessary groupby conditions
 $query->distinct=TRUE;
+ case 'my_leave';
+ // $query->addField('leave_details', 'application_id', '', ['function' => 'max']);
+//$query->addField('taxonomy_term_field_data_leave_details', 'tid', 'tid_1', array('function' => 'groupby'));
+$query->addGroupBy('taxonomy_term_field_data_leave_details.tid');
+ $query->distinct=TRUE;
     break;
   }
 }
+
+

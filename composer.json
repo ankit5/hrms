@@ -30,6 +30,7 @@
         "drupal/toolbar_menu": "2.2",
         "drupal/view_custom_table": "2.0",
         "drupal/views_bulk_operations": "4.2",
+        "drupal/views_data_export": "1.2",
         "drupal/views_database_connector": "1.4",
         "drupal/views_exposed_filter_blocks": "1.1",
         "drush/drush": "~10"

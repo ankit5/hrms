@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '66bff3a1dd4d0b5ed0057972c63a33c0ae09326d',
+        'reference' => '4d0055690665692e6d0d26bbe9f55a78a7bcd914',
         'name' => 'drupal/legacy-project',
         'dev' => true,
     ),
@@ -376,6 +376,17 @@
                 0 => '9.4.8',
             ),
         ),
+        'drupal/csv_serialization' => array(
+            'pretty_version' => 'dev-3.x',
+            'version' => 'dev-3.x',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../modules/contrib/csv_serialization',
+            'aliases' => array(
+                0 => '3.x-dev',
+            ),
+            'reference' => '18c9d54f8d598bffeb330ddbf2bdbaba7238e169',
+            'dev_requirement' => false,
+        ),
         'drupal/feeds' => array(
             'pretty_version' => '3.0.0-beta2',
             'version' => '3.0.0.0-beta2',
@@ -454,7 +465,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '66bff3a1dd4d0b5ed0057972c63a33c0ae09326d',
+            'reference' => '4d0055690665692e6d0d26bbe9f55a78a7bcd914',
             'dev_requirement' => false,
         ),
         'drupal/tamper' => array(
@@ -502,6 +513,15 @@
             'install_path' => __DIR__ . '/../../modules/contrib/views_bulk_operations',
             'aliases' => array(),
             'reference' => '4.2.0',
+            'dev_requirement' => false,
+        ),
+        'drupal/views_data_export' => array(
+            'pretty_version' => '1.2.0',
+            'version' => '1.2.0.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../modules/contrib/views_data_export',
+            'aliases' => array(),
+            'reference' => '8.x-1.2',
             'dev_requirement' => false,
         ),
         'drupal/views_database_connector' => array(
@@ -637,6 +657,15 @@
             'install_path' => __DIR__ . '/../league/container',
             'aliases' => array(),
             'reference' => '84ecbc2dbecc31bd23faf759a0e329ee49abddbd',
+            'dev_requirement' => false,
+        ),
+        'league/csv' => array(
+            'pretty_version' => '9.8.0',
+            'version' => '9.8.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../league/csv',
+            'aliases' => array(),
+            'reference' => '9d2e0265c5d90f5dd601bc65ff717e05cec19b47',
             'dev_requirement' => false,
         ),
         'masterminds/html5' => array(
