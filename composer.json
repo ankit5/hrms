@@ -26,6 +26,7 @@
         "drupal/feeds_tamper": "^2.0@beta",
         "drupal/fontawesome": "2.24",
         "drupal/fontawesome_menu_icons": "1.9",
+        "drupal/smtp": "1.2",
         "drupal/time_picker": "5.3",
         "drupal/toolbar_menu": "2.2",
         "drupal/view_custom_table": "2.0",

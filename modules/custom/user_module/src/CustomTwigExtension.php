@@ -3,7 +3,7 @@
 namespace Drupal\user_module;
 use Drupal\views\Views;
 use Drupal\user_module\Controller\OrderController;
-
+use Drupal\Core\Datetime\DrupalDateTime;
 
 /**
  * Extend Drupal's Twig_Extension class.
@@ -58,8 +58,18 @@ class CustomTwigExtension extends \Twig_Extension {
       new \Twig_SimpleFunction('city_value', [$this, 'cityValue']),
       new \Twig_SimpleFunction('node_load', [$this, 'node_load']),
       new \Twig_SimpleFunction('parse_url_remove', [$this, 'parse_url_remove']),
+      new \Twig_SimpleFunction('work_hours_diff', [$this, 'work_hours_diff']),
     ];
   }
+
+ public function work_hours_diff($time1,$time2) {
+   // Creating DateTime objects
+$time1 = new DrupalDateTime($time1);
+$time2 = new DrupalDateTime($time2);
+$timediff = $time1->diff($time2);
+//return $timediff->format('%y year %m month %d days %h hour %i minute %s second');
+return $timediff->format('%h hour %i minute');
+} 
 
   /**
  * Get City name by value function.
