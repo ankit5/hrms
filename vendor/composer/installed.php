@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '0ede79953c668f27ed4b78f2bc987aec5999e8bd',
+        'reference' => 'bc273287071925e3680d502b66b8157f3fcd65c4',
         'name' => 'drupal/legacy-project',
         'dev' => true,
     ),
@@ -179,6 +179,15 @@
             'install_path' => __DIR__ . '/../../modules/contrib/better_exposed_filters',
             'aliases' => array(),
             'reference' => '8.x-5.2',
+            'dev_requirement' => false,
+        ),
+        'drupal/conditional_fields' => array(
+            'pretty_version' => '4.0.0-alpha1',
+            'version' => '4.0.0.0-alpha1',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../modules/contrib/conditional_fields',
+            'aliases' => array(),
+            'reference' => '4.0.0-alpha1',
             'dev_requirement' => false,
         ),
         'drupal/core' => array(
@@ -465,7 +474,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '0ede79953c668f27ed4b78f2bc987aec5999e8bd',
+            'reference' => 'bc273287071925e3680d502b66b8157f3fcd65c4',
             'dev_requirement' => false,
         ),
         'drupal/smtp' => array(
