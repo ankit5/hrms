@@ -822,6 +822,16 @@ $databases['default']['default'] = array (
   'driver' => 'mysql',
   'autoload' => 'core/modules/mysql/src/Driver/Database/mysql/',
 );
+
+//Setting for mail SMTP
+$config['smtp.settings']['smtp_on'] = "true";
+$config['smtp.settings']['smtp_host'] = 'smtp.mailtrap.io';
+$config['smtp.settings']['smtp_port'] = '2525';
+$config['smtp.settings']['smtp_protocol'] = 'tls';
+$config['smtp.settings']['smtp_username'] = '372ef60db87c5b';
+$config['smtp.settings']['smtp_password'] = 'b716018e6c1ea6';
+
+
 $settings['config_sync_directory'] = 'sites/default/files/config_Uzz3RuwIB4eYko7K9ZpfepCooj3gwwYaFj_Idcc2zwQW1jBVZq2s0jzhXoUDGef9jB9LeK6JnA/sync';
 
 
