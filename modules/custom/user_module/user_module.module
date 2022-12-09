@@ -41,8 +41,22 @@ function user_module_form_alter(&$form, FormStateInterface $form_state, $form_id
 
   //  $form['title']['widget'][0]['value']['#value'] = 'The default title';
   $form['#validate'][] = '_form_validation_attendance';
+  $form['actions']['submit']['#submit'][] = '_form_submit_attendance';
    
   }
+}
+
+function _form_submit_attendance(&$form, FormStateInterface $form_state) 
+{
+ 
+    $entity = $form_state->getFormObject()->getEntity();
+ if($form_state->getValue('field_status_type')[0]['value']!='Present'){
+  $entity->set('field_in_time', '');
+  $entity->set('field_out_time', '');
+  //Save the entity
+  $entity->save();
+ //  \Drupal::service('messenger')->addMessage("Why won't this message show?");
+}
 }
 
 /**
@@ -67,6 +81,8 @@ LIMIT 1 OFFSET 0")->fetchObject();
    if (isset($results->nid)) {
       $form_state->setErrorByName('field_punch_date', t('This Date Attendance Already Added.'));  
     }
+
+     $form_state->set('field_in_time', '');
     
        
 }
