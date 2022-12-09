@@ -205,7 +205,7 @@ class ExcelExport extends Serializer {
     $build['#attached']['html_head_link'][][] = [
       'rel' => 'alternate',
       'type' => $this->displayHandler->getMimeType(),
-      'title' => $title,
+      'title' => 'asdsd',
       'href' => $url,
     ];
   }

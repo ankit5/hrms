@@ -824,12 +824,19 @@ $databases['default']['default'] = array (
 );
 
 //Setting for mail SMTP
-$config['smtp.settings']['smtp_on'] = "true";
+/*$config['smtp.settings']['smtp_on'] = "true";
 $config['smtp.settings']['smtp_host'] = 'smtp.mailtrap.io';
 $config['smtp.settings']['smtp_port'] = '2525';
 $config['smtp.settings']['smtp_protocol'] = 'tls';
 $config['smtp.settings']['smtp_username'] = '372ef60db87c5b';
-$config['smtp.settings']['smtp_password'] = 'b716018e6c1ea6';
+$config['smtp.settings']['smtp_password'] = 'b716018e6c1ea6';*/
+
+$config['smtp.settings']['smtp_on'] = "true";
+$config['smtp.settings']['smtp_host'] = 'mail.techto.live';
+$config['smtp.settings']['smtp_port'] = '465';
+$config['smtp.settings']['smtp_protocol'] = 'ssl';
+$config['smtp.settings']['smtp_username'] = 'wildnet@techto.live';
+$config['smtp.settings']['smtp_password'] = 'ankitmail';
 
 
 $settings['config_sync_directory'] = 'sites/default/files/config_Uzz3RuwIB4eYko7K9ZpfepCooj3gwwYaFj_Idcc2zwQW1jBVZq2s0jzhXoUDGef9jB9LeK6JnA/sync';
