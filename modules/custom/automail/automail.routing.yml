@@ -1,0 +1,15 @@
+automail.admin_form:
+  path: '/admin/config/content/automail'
+  defaults:
+    _title: 'Email configuration page'
+    _form: '\Drupal\automail\Form\AutoMailSettingForm'
+  requirements:
+    _permission: 'administer automail'
+
+automail.user_form:
+  path: '/admin/config/content/automail/usersetting'
+  defaults:
+    _title: 'User configuration page'
+    _form: '\Drupal\automail\Form\UserMailSettingForm'
+  requirements:
+    _permission: 'administer automail'

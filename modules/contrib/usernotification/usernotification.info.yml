@@ -1,0 +1,14 @@
+name: Send User Notification
+description: 'Send user notification module, allows administrator to send notification message to website users about any information, coupons, vouchers, or any type of activities to their mails.'
+type: module
+core_version_requirement: ">=8"
+package: 'Notification'
+configure: usernotification.notification_settings
+dependencies:
+ - drupal:user
+ - drupal:token
+
+# Information added by Drupal.org packaging script on 2022-06-09
+version: '2.0.0'
+project: 'usernotification'
+datestamp: 1654768891

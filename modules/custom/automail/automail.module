@@ -1,0 +1,102 @@
+<?php
+
+/**
+ * @file
+ * Auto Email module.
+ */
+
+use Drupal\node\Entity\Node;
+
+/**
+ * Implements hook_theme().
+ */
+function automail_theme($existing, $type, $theme, $path) {
+  return [
+    'mail_for_user' => [
+      'variables' => ['mail_data' => NULL],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_node_insert().
+ */
+function automail_node_insert(Node $node) {
+  $config = \Drupal::config('automail.settings');
+  
+  $data['subject'] = $config->get('automail_subject');
+  $message = $config->get('automail_body');
+  $renderable = [
+    '#theme' => 'mail_for_user',
+    '#mail_data' => $message,
+  ];
+  $data['message'] = \Drupal::service('renderer')->render($renderable);
+  $data['user_role'] = $config->get('user_roles_list');
+  $queue = \Drupal::queue('email_queue');
+  $queue->createQueue();
+  $queue->createItem($data);
+  // \Drupal::messenger()->addStatus('Punch Succesfully');
+     
+}
+
+/**
+ * Implements hook_cron().
+ */
+function automail_cron() {
+
+/////////////////////////////////// Create Queue
+   $config = \Drupal::config('automail.settings');
+  
+  $data['subject'] = $config->get('automail_subject');
+  $message = $config->get('automail_body');
+  $renderable = [
+    '#theme' => 'mail_for_user',
+    '#mail_data' => $message,
+  ];
+  $data['message'] = \Drupal::service('renderer')->render($renderable);
+  $data['user_role'] = $config->get('user_roles_list');
+  $queue = \Drupal::queue('email_queue');
+  $queue->createQueue();
+   $queue->createItem($data);
+
+/*//////////////////////////////////////// Run Queue
+
+   $queue_factory = \Drupal::service('queue');
+$queue_manager = \Drupal::service('plugin.manager.queue_worker');
+
+$queue_worker = $queue_manager->createInstance('email_queue');
+
+$queue = $queue_factory->get('email_queue');
+$item = $queue->claimItem();
+$queue_worker->processItem($item->data);
+
+//////////////////////////////////////////////Delete Queue
+
+\Drupal::service('queue')->get('email_queue')->deleteQueue();*/
+  
+}
+
+/**
+ * Implements hook_mail().
+ */
+function automail_mail($key, &$message, $params) {
+  $options = [
+    'langcode' => $message['langcode'],
+  ];
+  switch ($key) {
+    case 'send_mailto_user':
+     $token_service = \Drupal::token(); 
+          //get the Drupal token service which replaces tokens with tokens' data
+//$body_field_data = $data['message'];  //get the "text" (basic data) of the body field
+$token_data = array('user' => $params['account'],);
+$token_options = ['clear' => TRUE];
+$params['title'] = $token_service->replace($params['title'], $token_data, $token_options);
+$params['message'] = $token_service->replace($params['message'], $token_data, $token_options); 
+      $message['headers']['Content-Type'] = 'text/html; charset=UTF-8; format=flowed; delsp=yes';
+      $message['headers']['reply-to']=\Drupal::config('system.site')->get('mail');
+      $message['from'] = \Drupal::config('system.site')->get('mail');
+      $message['subject'] = t('@title', ['@title' => $params['title']], $options);
+      $message['body'][] = $params['message'];
+      break;
+  }
+}

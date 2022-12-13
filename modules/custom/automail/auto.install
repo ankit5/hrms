@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * @file
+ * The installation instructions for the automail.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function automail_uninstall() {
+  $config = \Drupal::service('config.factory');
+  $automail_config = $config->getEditable('automail.settings');
+  // Cleaning garbage.
+  $automail_config->delete();
+}

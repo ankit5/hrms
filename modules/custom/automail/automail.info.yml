@@ -1,0 +1,10 @@
+name: Automail
+description: Send Mail to User or specific role.
+type: module
+core_version_requirement: ^8 || ^9
+configure: automail.admin_form
+
+# Information added by Drupal.org packaging script on 2019-08-29
+version: '8.x-1.2'
+project: 'automail'
+datestamp: 1567069688

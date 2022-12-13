@@ -1,0 +1,5 @@
+automail.admin:
+   route_name: automail.user_form
+   title: 'Auto Mail'
+   description: 'Configure settings for automail subject and body.'
+   parent: system.admin_config_system

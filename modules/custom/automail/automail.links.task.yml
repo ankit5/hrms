@@ -1,0 +1,11 @@
+automail.setting_tab:
+  route_name: automail.admin_form
+  title: Email Settings
+  weight: 5
+  base_route: automail.admin_form
+
+automail.user_tab:
+  route_name: automail.user_form
+  title: User Settings
+  weight: 10
+  base_route: automail.admin_form
