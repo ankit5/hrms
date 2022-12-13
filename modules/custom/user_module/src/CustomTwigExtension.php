@@ -68,7 +68,7 @@ $time1 = new DrupalDateTime($time1);
 $time2 = new DrupalDateTime($time2);
 $timediff = $time1->diff($time2);
 //return $timediff->format('%y year %m month %d days %h hour %i minute %s second');
-return $timediff->format('%h:%i');
+return $timediff->format('%h.%i');
 } 
 
   /**
