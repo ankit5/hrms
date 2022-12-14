@@ -832,11 +832,11 @@ $config['smtp.settings']['smtp_username'] = '372ef60db87c5b';
 $config['smtp.settings']['smtp_password'] = 'b716018e6c1ea6';*/
 
 $config['smtp.settings']['smtp_on'] = "true";
-$config['smtp.settings']['smtp_host'] = 'mail.techto.live';
-$config['smtp.settings']['smtp_port'] = '465';
-$config['smtp.settings']['smtp_protocol'] = 'ssl';
-$config['smtp.settings']['smtp_username'] = 'wildnet@techto.live';
-$config['smtp.settings']['smtp_password'] = 'ankitmail';
+$config['smtp.settings']['smtp_host'] = 'smtp.gmail.com';
+$config['smtp.settings']['smtp_port'] = '587';
+$config['smtp.settings']['smtp_protocol'] = 'tsl';
+$config['smtp.settings']['smtp_username'] = 'timesheet@wildnettechnologies.com';
+$config['smtp.settings']['smtp_password'] = 'wild@M12022';
 
 
 $settings['config_sync_directory'] = 'sites/default/files/config_Uzz3RuwIB4eYko7K9ZpfepCooj3gwwYaFj_Idcc2zwQW1jBVZq2s0jzhXoUDGef9jB9LeK6JnA/sync';
