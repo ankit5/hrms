@@ -812,9 +812,9 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
 );*/
 
 $databases['default']['default'] = array (
-  'database' => 'ankitver_drupalhrms',
-  'username' => 'ankitver_drupal',
-  'password' => '8y{a(o-IrhQ~',
+  'database' => 'timesheet_drupal',
+  'username' => 'timesheet_timesheet',
+  'password' => 'ItcK1%u1x#(W',
   'prefix' => '',
   'host' => 'localhost',
   'port' => '3306',
