@@ -59,8 +59,22 @@ class CustomTwigExtension extends \Twig_Extension {
       new \Twig_SimpleFunction('node_load', [$this, 'node_load']),
       new \Twig_SimpleFunction('parse_url_remove', [$this, 'parse_url_remove']),
       new \Twig_SimpleFunction('work_hours_diff', [$this, 'work_hours_diff']),
+      new \Twig_SimpleFunction('current_uri', [$this, 'current_uri']),
+      new \Twig_SimpleFunction('current_uri_param', [$this, 'current_uri_param']),
     ];
   }
+
+ public function current_uri(){
+   $current_uri = \Drupal::request()->getRequestUri();
+    return $current_uri;
+ } 
+
+ public function current_uri_param(){
+   $current_uri = \Drupal::request()->getRequestUri();
+    return  parse_url($current_uri, PHP_URL_QUERY);;
+ } 
+
+
 
  public function work_hours_diff($time1,$time2) {
    // Creating DateTime objects
