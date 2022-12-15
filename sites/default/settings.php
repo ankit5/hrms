@@ -832,8 +832,8 @@ $config['smtp.settings']['smtp_username'] = '372ef60db87c5b';
 $config['smtp.settings']['smtp_password'] = 'b716018e6c1ea6';*/
 
 
-$config['smtp.settings']['smtp_on'] = "true";
-$config['smtp.settings']['smtp_host'] = 'dedrelay.secureserver.net';
+//$config['smtp.settings']['smtp_on'] = "true";
+//$config['smtp.settings']['smtp_host'] = 'dedrelay.secureserver.net';
 //$config['smtp.settings']['smtp_port'] = '465';
 //$config['smtp.settings']['smtp_protocol'] = 'ssl';
 // $config['smtp.settings']['smtp_username'] = 'timesheet@wildnettechnologies.com';
