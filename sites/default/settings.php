@@ -833,8 +833,8 @@ $config['smtp.settings']['smtp_password'] = 'b716018e6c1ea6';*/
 
 
 $config['smtp.settings']['smtp_on'] = "true";
-$config['smtp.settings']['smtp_host'] = 'aspmx.l.google.com';
-$config['smtp.settings']['smtp_port'] = '25';
+$config['smtp.settings']['smtp_host'] = 'smtp.gmail.com';
+$config['smtp.settings']['smtp_port'] = '465';
 $config['smtp.settings']['smtp_protocol'] = 'ssl';
 $config['smtp.settings']['smtp_username'] = 'timesheet@wildnettechnologies.com';
 $config['smtp.settings']['smtp_password'] = 'wild@M12022';
