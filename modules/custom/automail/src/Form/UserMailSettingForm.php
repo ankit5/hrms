@@ -57,6 +57,9 @@ class UserMailSettingForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
+   /* $current_uri = \Drupal::request()->getRequestUri();
+    print parse_url($current_uri, PHP_URL_QUERY);
+  //  print $current_uri;*/
     $roles = [];
     $options = [];
     $config = $this->configFactory->get('automail.settings');
@@ -105,8 +108,8 @@ class UserMailSettingForm extends ConfigFormBase {
     ];
      $form['email_fieldset']['body_tokens'] = [
       '#theme' => 'token_tree_link',
-      '#token_types' => ['user'],
-      '#global_types' => FALSE,
+      '#token_types' => ['user','site'],
+      '#global_types' => TRUE,
       '#click_insert' => TRUE,
     ];
     return parent::buildForm($form, $form_state);
