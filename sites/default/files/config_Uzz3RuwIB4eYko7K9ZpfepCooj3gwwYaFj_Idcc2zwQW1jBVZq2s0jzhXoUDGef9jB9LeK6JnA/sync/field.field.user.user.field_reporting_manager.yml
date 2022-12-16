@@ -1,0 +1,20 @@
+uuid: 1d74b006-f1a5-4175-b520-34eeb7e71a2f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_reporting_manager
+  module:
+    - user
+id: user.user.field_reporting_manager
+field_name: field_reporting_manager
+entity_type: user
+bundle: user
+label: 'Reporting Manager'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

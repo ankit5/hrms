@@ -1,0 +1,20 @@
+uuid: fc732133-cc58-4b47-95ce-7b3a378bffad
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_reporting_manager_email_id
+  module:
+    - user
+id: user.user.field_reporting_manager_email_id
+field_name: field_reporting_manager_email_id
+entity_type: user
+bundle: user
+label: 'Reporting Manager Email Id'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

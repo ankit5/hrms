@@ -1,0 +1,51 @@
+uuid: 12b75f96-c6ba-49ac-91dc-ff280bd139a8
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.user.compact
+    - field.field.user.user.feeds_item
+    - field.field.user.user.field_client
+    - field.field.user.user.field_employee_id
+    - field.field.user.user.field_jobtitle
+    - field.field.user.user.field_location
+    - field.field.user.user.field_mobile_phone
+    - field.field.user.user.field_name
+    - field.field.user.user.field_reporting_manager
+    - field.field.user.user.field_reporting_manager_email_id
+    - field.field.user.user.field_work_phone
+    - field.field.user.user.user_picture
+    - image.style.thumbnail
+  module:
+    - image
+    - user
+_core:
+  default_config_hash: 00zr_RBdTjPjBGITD3h4c1ESQZimjdVCcHGt1trLqIY
+id: user.user.compact
+targetEntityType: user
+bundle: user
+mode: compact
+content:
+  user_picture:
+    type: image
+    label: hidden
+    settings:
+      image_link: content
+      image_style: thumbnail
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  feeds_item: true
+  field_client: true
+  field_employee_id: true
+  field_jobtitle: true
+  field_location: true
+  field_mobile_phone: true
+  field_name: true
+  field_reporting_manager: true
+  field_reporting_manager_email_id: true
+  field_work_phone: true
+  member_for: true

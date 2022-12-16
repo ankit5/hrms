@@ -1,0 +1,30 @@
+uuid: f35dfb80-02fb-4f1c-ab8e-d6fdd2f63ddb
+langcode: en
+status: true
+dependencies:
+  module:
+    - automail
+title: 'Queue: Automail Send Queued Email'
+id: ultimate_cron_queue_email_queue
+weight: 10
+module: automail
+callback: 'ultimate_cron.queue_worker:queueCallback'
+scheduler:
+  id: crontab
+  configuration:
+    rules:
+      - '55 17 * * 1-5'
+    catch_up: 0
+launcher:
+  id: serial
+  configuration:
+    timeouts:
+      lock_timeout: 3600
+    launcher:
+      thread: 0
+logger:
+  id: database
+  configuration:
+    method: '3'
+    expire: 1209600
+    retain: 1000

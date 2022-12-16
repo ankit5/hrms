@@ -1,0 +1,18 @@
+uuid: 373c24da-a0c5-4c4b-8a37-aa5ca7c098b8
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.attendance
+  module:
+    - node
+    - toolbar
+    - user_module
+id: employee
+label: employee
+weight: 4
+is_admin: null
+permissions:
+  - 'access toolbar'
+  - 'create attendance content'
+  - 'employee Access'

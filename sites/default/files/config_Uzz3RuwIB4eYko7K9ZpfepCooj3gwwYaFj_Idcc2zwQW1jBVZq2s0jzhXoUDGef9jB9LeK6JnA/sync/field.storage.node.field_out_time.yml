@@ -1,0 +1,23 @@
+uuid: 8cacc5f3-bfce-4a5c-a5ff-72acebd12285
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - time_picker
+id: node.field_out_time
+field_name: field_out_time
+entity_type: node
+type: time_picker
+settings:
+  time_picker_theme: theme_default
+  hour_format: 12h
+  is_ascii: false
+  case_sensitive: false
+module: time_picker
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

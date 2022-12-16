@@ -1,0 +1,33 @@
+uuid: 364b7fe9-798a-43e0-ad2b-e69ea2f23195
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_status_type
+field_name: field_status_type
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: Present
+      label: Present
+    -
+      value: Leave
+      label: Leave
+    -
+      value: 'Client Holiday'
+      label: 'Client Holiday'
+    -
+      value: 'Paid Day (Work Stopped)'
+      label: 'Paid Day (Work Stopped)'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

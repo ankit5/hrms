@@ -1,0 +1,24 @@
+uuid: 832e5388-fdf0-4907-a458-b822fdfebb35
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_out_time
+    - node.type.attendance
+  module:
+    - time_picker
+id: node.attendance.field_out_time
+field_name: field_out_time
+entity_type: node
+bundle: attendance
+label: 'Out Time'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    time: '07:00 PM'
+    locate: null
+default_value_callback: ''
+settings: {  }
+field_type: time_picker

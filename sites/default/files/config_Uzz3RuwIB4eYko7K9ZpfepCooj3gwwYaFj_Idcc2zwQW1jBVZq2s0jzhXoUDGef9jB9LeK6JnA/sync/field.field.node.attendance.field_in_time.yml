@@ -1,0 +1,24 @@
+uuid: f9745a40-5bc7-406a-bba4-01479835166a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_in_time
+    - node.type.attendance
+  module:
+    - time_picker
+id: node.attendance.field_in_time
+field_name: field_in_time
+entity_type: node
+bundle: attendance
+label: 'In time'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    time: '10:00 AM'
+    locate: null
+default_value_callback: ''
+settings: {  }
+field_type: time_picker

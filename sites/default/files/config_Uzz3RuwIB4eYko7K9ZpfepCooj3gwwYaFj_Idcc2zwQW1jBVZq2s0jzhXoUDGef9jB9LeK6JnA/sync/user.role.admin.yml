@@ -1,0 +1,21 @@
+uuid: ba2ad5dc-1bc6-4a5d-9844-c13f562e43a4
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.attendance
+  module:
+    - node
+    - toolbar
+    - user_module
+id: admin
+label: admin
+weight: 5
+is_admin: null
+permissions:
+  - 'access toolbar'
+  - 'access user profiles'
+  - 'admin custom module'
+  - 'administer users'
+  - 'create attendance content'
+  - 'employee Access'

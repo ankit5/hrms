@@ -1,0 +1,20 @@
+uuid: 45fcfa18-6067-4810-b0e1-7387976384fe
+langcode: en
+status: false
+dependencies:
+  module:
+    - feeds
+title: 'Queue: Feed refresh: user import'
+id: ultimate_cron_queue_feeds_feed_refresh__user_import
+weight: 10
+module: feeds
+callback: 'ultimate_cron.queue_worker:queueCallback'
+scheduler:
+  id: simple
+  configuration:
+    rules:
+      - '* * * * *'
+launcher:
+  id: serial
+logger:
+  id: database

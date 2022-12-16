@@ -1,0 +1,23 @@
+uuid: 07cad160-6850-42a8-bb7f-2314773543d1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_status_type
+    - node.type.attendance
+  module:
+    - options
+id: node.attendance.field_status_type
+field_name: field_status_type
+entity_type: node
+bundle: attendance
+label: Status
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: Present
+default_value_callback: ''
+settings: {  }
+field_type: list_string

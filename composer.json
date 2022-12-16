@@ -27,6 +27,7 @@
         "drupal/feeds_tamper": "^2.0@beta",
         "drupal/fontawesome": "2.24",
         "drupal/fontawesome_menu_icons": "1.9",
+        "drupal/gin_login": "2.0",
         "drupal/mailsystem": "4.4",
         "drupal/queue_ui": "3.1",
         "drupal/smtp": "1.2",

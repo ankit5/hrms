@@ -1,0 +1,22 @@
+uuid: 659cca96-995f-40ab-8f14-6570308d4e78
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.attendance
+id: node.attendance.status
+field_name: status
+entity_type: node
+bundle: attendance
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,8 @@
+uuid: b96744a8-d735-4c87-9837-d19db9125f9d
+langcode: en
+status: true
+dependencies: {  }
+name: 'Leave Type'
+vid: leave_type
+description: ''
+weight: 0

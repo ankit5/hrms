@@ -1,0 +1,25 @@
+uuid: b49230f2-5bba-44de-97fa-1062e9871091
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+    - user_module
+  theme:
+    - claro
+id: punchblock
+theme: claro
+region: content
+weight: -3
+provider: null
+plugin: punch_block
+settings:
+  id: punch_block
+  label: 'Punch block'
+  label_display: '0'
+  provider: user_module
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: /my/attendance

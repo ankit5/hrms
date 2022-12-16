@@ -1,0 +1,19 @@
+uuid: 65e67e66-3bc7-49d2-bd4f-764f30b9dd90
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_comment
+    - node.type.attendance
+id: node.attendance.field_comment
+field_name: field_comment
+entity_type: node
+bundle: attendance
+label: 'Comment (Optional)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

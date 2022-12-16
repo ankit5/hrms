@@ -1,0 +1,24 @@
+uuid: 14aabe9c-4c7b-4262-8a59-9cbf2062e054
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_punch_date
+    - node.type.attendance
+  module:
+    - datetime
+id: node.attendance.field_punch_date
+field_name: field_punch_date
+entity_type: node
+bundle: attendance
+label: Date
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+default_value_callback: ''
+settings: {  }
+field_type: datetime

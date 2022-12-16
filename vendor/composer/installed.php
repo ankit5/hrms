@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '3915d96abc8f345b96f661cf1fbe2d3b0aac3cc4',
+        'reference' => '1c046192a335d991bda131366c04ccf20cd2ceb3',
         'name' => 'drupal/legacy-project',
         'dev' => true,
     ),
@@ -432,6 +432,15 @@
             'reference' => '8.x-1.9',
             'dev_requirement' => false,
         ),
+        'drupal/gin_login' => array(
+            'pretty_version' => '2.0.0',
+            'version' => '2.0.0.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../modules/contrib/gin_login',
+            'aliases' => array(),
+            'reference' => '2.0.0',
+            'dev_requirement' => false,
+        ),
         'drupal/jquery_ui' => array(
             'pretty_version' => '1.6.0',
             'version' => '1.6.0.0',
@@ -474,7 +483,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '3915d96abc8f345b96f661cf1fbe2d3b0aac3cc4',
+            'reference' => '1c046192a335d991bda131366c04ccf20cd2ceb3',
             'dev_requirement' => false,
         ),
         'drupal/mailsystem' => array(

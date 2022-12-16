@@ -1,0 +1,23 @@
+uuid: a5570c53-64e2-4307-bbfc-841ba6370b95
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - time_picker
+id: node.field_in_time
+field_name: field_in_time
+entity_type: node
+type: time_picker
+settings:
+  time_picker_theme: theme_default
+  hour_format: 12h
+  is_ascii: false
+  case_sensitive: false
+module: time_picker
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

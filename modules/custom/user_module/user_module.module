@@ -44,6 +44,16 @@ function user_module_form_alter(&$form, FormStateInterface $form_state, $form_id
   $form['actions']['submit']['#submit'][] = '_form_submit_attendance';
    
   }
+
+ $view_names = ['attendance_punch'];
+  $view = $form_state->getStorage('view');
+  if ($form_id == 'views_exposed_form' && in_array($view['view']->id(), $view_names)) {
+  //  $form['field_punch_date_value']['#default_value'] = '12/01/2022';
+    
+  }
+
+
+
 }
 
 function _form_submit_attendance(&$form, FormStateInterface $form_state) 
@@ -55,6 +65,25 @@ function _form_submit_attendance(&$form, FormStateInterface $form_state)
   $entity->set('field_out_time', '');
   //Save the entity
   $entity->save();
+  if($form_state->getValue('field_status_type')[0]['value']=='Last Working Day'){
+$current_user = \Drupal::currentUser();
+$uid = $current_user->id();
+ $user_roles = $current_user->getRoles();
+    if (in_array('employee', $user_roles)) {
+     $user = \Drupal\user\Entity\User::load($uid);
+
+$user->block();
+
+$user->save();
+\Drupal::service('messenger')->addMessage("Successfully Submit Last Working Day.");
+$url = Url::fromUserInput('/user/login', [], ['absolute' => 'true']);
+     $response = new RedirectResponse($url->toString());
+      $response->send();
+    }else{
+
+    }
+
+  }
  //  \Drupal::service('messenger')->addMessage("Why won't this message show?");
 }
 }
@@ -81,8 +110,18 @@ LIMIT 1 OFFSET 0")->fetchObject();
    if (isset($results->nid)) {
       $form_state->setErrorByName('field_punch_date', t('This Date Attendance Already Added.'));  
     }
-
-     $form_state->set('field_in_time', '');
+ $current_time = \Drupal::time()->getCurrentTime();
+      $month_current = date('m', $current_time);
+      $month_select = date('m', strtotime($date));
+      if($month_current!=$month_select){
+     $form_state->setErrorByName('field_punch_date', t('You can not select date Before month or upcoming month'));
+      }
+      $day_current = date('d', $current_time);
+      $day_select = date('d', strtotime($date));
+       if($day_select>$day_current){
+     $form_state->setErrorByName('field_punch_date', t('You can not select date upcoming day'));
+      }
+    
     
        
 }
