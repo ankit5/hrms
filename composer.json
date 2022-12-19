@@ -30,6 +30,7 @@
         "drupal/gin_login": "2.0",
         "drupal/mailsystem": "4.4",
         "drupal/queue_ui": "3.1",
+        "drupal/select_registration_roles": "^2.0@beta",
         "drupal/smtp": "1.2",
         "drupal/time_picker": "5.3",
         "drupal/toolbar_menu": "2.2",

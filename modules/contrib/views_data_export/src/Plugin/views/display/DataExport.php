@@ -222,7 +222,7 @@ class DataExport extends RestExport {
 
     // Set download, file storage and redirect defaults.
     $options['automatic_download']['default'] = FALSE;
-    $options['store_in_public_file_directory']['default'] = FALSE;
+    $options['store_in_public_file_directory']['default'] = TRUE;
     $options['custom_redirect_path']['default'] = FALSE;
 
     // Redirect to views display option.

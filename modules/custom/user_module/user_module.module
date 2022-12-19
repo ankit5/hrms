@@ -27,7 +27,7 @@ use Drupal\user\UserInterface;
 
 function user_module_user_presave(Drupal\Core\Entity\EntityInterface $entity) {
  if($entity->isNew()) {
-   $entity->addRole('employee');
+  // $entity->addRole('employee');
  }
 }
 

@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '1c046192a335d991bda131366c04ccf20cd2ceb3',
+        'reference' => 'f6857f0b29c49a5fb82c2b06373d14411115d699',
         'name' => 'drupal/legacy-project',
         'dev' => true,
     ),
@@ -483,7 +483,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '1c046192a335d991bda131366c04ccf20cd2ceb3',
+            'reference' => 'f6857f0b29c49a5fb82c2b06373d14411115d699',
             'dev_requirement' => false,
         ),
         'drupal/mailsystem' => array(
@@ -502,6 +502,15 @@
             'install_path' => __DIR__ . '/../../modules/contrib/queue_ui',
             'aliases' => array(),
             'reference' => '3.1.0',
+            'dev_requirement' => false,
+        ),
+        'drupal/select_registration_roles' => array(
+            'pretty_version' => '2.0.0-beta1',
+            'version' => '2.0.0.0-beta1',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../modules/contrib/select_registration_roles',
+            'aliases' => array(),
+            'reference' => '2.0.0-beta1',
             'dev_requirement' => false,
         ),
         'drupal/smtp' => array(
