@@ -811,6 +811,8 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
   'autoload' => 'core/modules/mysql/src/Driver/Database/mysql/',
 );*/
 
+
+
 $databases['default']['default'] = array (
   'database' => 'timesheet_drupal',
   'username' => 'timesheet_timesheet',
