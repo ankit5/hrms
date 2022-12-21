@@ -322,7 +322,7 @@ function user_module_entity_field_access($operation, FieldDefinitionInterface $f
     switch ($operation) {
       // there is a role based permission to decide who can edit
       case 'edit':
-        if ($account->hasPermission('Admin Custom module')) {
+        if ($account->hasPermission('admin custom module')) {
           return AccessResult::allowed();
         } else {
           return AccessResult::forbidden();
