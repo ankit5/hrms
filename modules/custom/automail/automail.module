@@ -22,7 +22,7 @@ function automail_theme($existing, $type, $theme, $path) {
  * Implements hook_node_insert().
  */
 function automail_node_insert(Node $node) {
-  $config = \Drupal::config('automail.settings');
+  /*$config = \Drupal::config('automail.settings');
   
   $data['subject'] = $config->get('automail_subject');
   $message = $config->get('automail_body');
@@ -34,7 +34,7 @@ function automail_node_insert(Node $node) {
   $data['user_role'] = $config->get('user_roles_list');
   $queue = \Drupal::queue('email_queue');
   $queue->createQueue();
-  $queue->createItem($data);
+  $queue->createItem($data);*/
   // \Drupal::messenger()->addStatus('Punch Succesfully');
      
 }

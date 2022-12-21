@@ -1,0 +1,6 @@
+view user created by field:
+  title: 'View User Created By field'
+  description: 'Allows a user to view the User Created By field'
+edit user created by field:
+  title: 'Edit User Created By field'
+  description: 'Allows a user to change the value of User Created By field'

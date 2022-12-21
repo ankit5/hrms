@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - user.role.admin
     - user.role.administrator
   module:
     - user
@@ -610,9 +611,11 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       access:
-        type: perm
+        type: role
         options:
-          perm: 'administer users'
+          role:
+            administrator: administrator
+            admin: admin
       cache:
         type: tag
       empty:
@@ -971,7 +974,7 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
-        - user.permissions
+        - user.roles
       tags: {  }
   page_1:
     id: page_1
@@ -1004,5 +1007,5 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
-        - user.permissions
+        - user.roles
       tags: {  }

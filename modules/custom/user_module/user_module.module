@@ -21,6 +21,37 @@ use Drupal\image\Entity\ImageStyle;
 use Drupal\taxonomy\Entity\Term;
 use Drupal\Core\Ajax\ReplaceCommand;
 use Drupal\user\UserInterface;
+
+
+
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Field\FieldDefinitionInterface;
+use Drupal\Core\Field\FieldItemListInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_user_format_name_alter().
+ */
+function user_module_user_format_name_alter(&$name, $account) {
+  // Load the full user account.
+  $account = \Drupal\user\Entity\User::load($account->id());
+  // Get the full name from field_name.
+  $full_name = $account->get('field_name')->value;
+  // If there's a value, set it as the new $name.
+  if (!empty($full_name)) {
+    $name = $full_name;
+  }
+}
+
+
+/**
+ * Attach the library on every page.
+ */
+function user_module_page_attachments_alter(array &$page) {
+  $page['#attached']['library'][] = 'user_module/confirmation-js';
+}
+
 /**
  * Submit handler for submit variant form.
  */
@@ -45,15 +76,36 @@ function user_module_form_alter(&$form, FormStateInterface $form_state, $form_id
    
   }
 
- $view_names = ['attendance_punch'];
+ $view_names = ['my_attendance'];
   $view = $form_state->getStorage('view');
   if ($form_id == 'views_exposed_form' && in_array($view['view']->id(), $view_names)) {
   //  $form['field_punch_date_value']['#default_value'] = '12/01/2022';
+   // print $form['field_punch_date_value']['#default_value'];
+    $field_punch_date_value = \Drupal::request()->query->get('field_punch_date_value');
+   
+    if($field_punch_date_value==''){
+     $params['query'] = [
+            'field_punch_date_value' => '12/01/2022',
+            'field_punch_date_value_1' => '12/31/2022',
+        ];
+     $url = Url::fromUserInput('/my/all-attendance',$params,['absolute' => 'true']);
+      $response = new RedirectResponse($url->toString());
+      $response->send();
+     exit();
+   }
     
   }
 
 
 
+}
+
+function user_module_views_post_render(\Drupal\views\ViewExecutable $view) {
+   if ($view->id() == 'my_attendance') {
+    // Set the view title.
+ //   $view->setTitle('NEW TITLE');
+
+   }
 }
 
 function _form_submit_attendance(&$form, FormStateInterface $form_state) 
@@ -234,5 +286,63 @@ $query->addGroupBy('taxonomy_term_field_data_leave_details.tid');
     break;
   }
 }
+
+/**
+ * Implements hook_mail().
+ */
+function user_module_mail($key, &$message, $params) {
+  $options = [
+    'langcode' => $message['langcode'],
+  ];
+  switch ($key) {
+    case 'approval_mail':
+     $message['from'] = $params['from'];//\Drupal::config('system.site')->get('mail');
+    $message['headers']['Content-Type'] = 'text/html; charset=UTF-8; format=flowed; delsp=yes';
+    $message['headers']['reply-to']=$params['reply-to'];
+    $message['headers']['Cc'] = $params['cc'];
+     $message['subject'] = $params['subject'];
+     $message['body'][] = $params['message'];
+     $message['params']['files'] = $params['attachments'];
+     
+     break;
+  }
+}
+
+
+/**
+ * Implements hook_entity_field_access().
+ *
+ * Purpose: uses the permissions provided by this module to hide the User Created By Field
+ *  on both who can edit and who can view.
+ */
+function user_module_entity_field_access($operation, FieldDefinitionInterface $field_definition, AccountInterface $account, FieldItemListInterface $items = NULL) {
+  \Drupal::logger('userfield')->notice($field_definition->getName());
+  if ($field_definition->getName() == 'field_employee_id') {
+    \Drupal::logger('userfield')->notice($operation);
+    switch ($operation) {
+      // there is a role based permission to decide who can edit
+      case 'edit':
+        if ($account->hasPermission('Admin Custom module')) {
+          return AccessResult::allowed();
+        } else {
+          return AccessResult::forbidden();
+        }
+        break;
+      // only show the field to the roles with permissions
+     /* case 'view':
+        if ($account->hasPermission('view user created by field')) {
+          return AccessResult::allowed();
+        } else {
+          return AccessResult::forbidden();
+        }
+        break;*/
+      default:
+        break;
+    }
+  }
+
+  return AccessResult::neutral();
+}
+
 
 

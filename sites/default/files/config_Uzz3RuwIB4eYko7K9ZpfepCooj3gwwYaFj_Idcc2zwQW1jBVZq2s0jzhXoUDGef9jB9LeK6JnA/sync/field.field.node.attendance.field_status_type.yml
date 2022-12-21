@@ -12,7 +12,7 @@ field_name: field_status_type
 entity_type: node
 bundle: attendance
 label: Status
-description: ''
+description: 'If Select Last Working Day your account will be deactivate Automatically. '
 required: true
 translatable: false
 default_value:

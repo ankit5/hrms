@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * @file
+ * Install, update, and uninstall functions for the user_created_by_field module.
+ */
+
+use Drupal\field\Entity\FieldStorageConfig;
+use Drupal\field\Entity\FieldConfig;
+
+/**
+ * Implements hook_uninstall().
+ *
+ * Delete the field from Users
+ */
+function user_created_by_field_uninstall() {
+  // Deleting field storage.
+  $fieldStorage = FieldStorageConfig::loadByName('user', 'field_user_created_by_field');
+  if ($fieldStorage) {
+    $fieldStorage->delete();
+  }
+
+  // Deleting field.
+  $fieldConfig = FieldConfig::loadByName('user', 'user', 'field_user_created_by_field');
+  if ($fieldConfig) {
+    $fieldConfig->delete();
+  }
+}

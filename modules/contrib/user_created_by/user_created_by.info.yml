@@ -1,0 +1,12 @@
+name: 'User Created By'
+type: module
+description: 'Allows to store the uid of the current user who created the user'
+core: 8.x
+core_version_requirement: ^8 || ^9
+dependencies:
+ - drupal:views
+
+# Information added by Drupal.org packaging script on 2021-11-03
+version: '2.0.0'
+project: 'user_created_by'
+datestamp: 1635952656

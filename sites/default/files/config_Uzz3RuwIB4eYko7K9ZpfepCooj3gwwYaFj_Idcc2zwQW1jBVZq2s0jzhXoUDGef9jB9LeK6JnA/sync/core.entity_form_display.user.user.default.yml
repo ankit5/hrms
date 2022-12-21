@@ -4,10 +4,12 @@ status: true
 dependencies:
   config:
     - field.field.user.user.feeds_item
+    - field.field.user.user.field_age
     - field.field.user.user.field_client
     - field.field.user.user.field_employee_id
     - field.field.user.user.field_jobtitle
     - field.field.user.user.field_location
+    - field.field.user.user.field_location2
     - field.field.user.user.field_mobile_phone
     - field.field.user.user.field_name
     - field.field.user.user.field_reporting_manager
@@ -30,9 +32,16 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_age:
+    type: number
+    weight: 7
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
   field_client:
     type: string_textfield
-    weight: 4
+    weight: 2
     region: content
     settings:
       size: 60
@@ -53,19 +62,17 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  field_location:
-    type: entity_reference_autocomplete
-    weight: 2
+  field_location2:
+    type: string_textfield
+    weight: 8
     region: content
     settings:
-      match_operator: CONTAINS
-      match_limit: 10
       size: 60
       placeholder: ''
     third_party_settings: {  }
   field_mobile_phone:
     type: string_textfield
-    weight: 7
+    weight: 5
     region: content
     settings:
       size: 60
@@ -73,7 +80,7 @@ content:
     third_party_settings: {  }
   field_name:
     type: string_textfield
-    weight: 6
+    weight: 4
     region: content
     settings:
       size: 60
@@ -97,7 +104,7 @@ content:
     third_party_settings: {  }
   field_work_phone:
     type: string_textfield
-    weight: 8
+    weight: 6
     region: content
     settings:
       size: 60
@@ -105,7 +112,7 @@ content:
     third_party_settings: {  }
   user_picture:
     type: image_image
-    weight: 5
+    weight: 3
     region: content
     settings:
       progress_indicator: throbber
@@ -114,5 +121,6 @@ content:
 hidden:
   contact: true
   feeds_item: true
+  field_location: true
   language: true
   timezone: true

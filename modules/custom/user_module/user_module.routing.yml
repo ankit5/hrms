@@ -22,6 +22,14 @@ user_module.admin_reg_accept:
   requirements:
     _permission: 'admin custom module'
 
+user_module.send_mail_approval:
+  path: '/admin/approval-send'
+  defaults:
+    _form: '\Drupal\user_module\Form\ApprovalForm'
+    _title: 'Confirmation This Month Attendance send for approval to your manager'
+  requirements:
+    _permission: 'employee Access'
+
 user_module.admin_attendance:
   path: /restapi/admin/attendance
   defaults:

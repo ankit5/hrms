@@ -23,6 +23,18 @@ settings:
     -
       value: 'Paid Day (Work Stopped)'
       label: 'Paid Day (Work Stopped)'
+    -
+      value: 'Last Working Day'
+      label: 'Last Working Day'
+    -
+      value: Weekend
+      label: Weekend
+    -
+      value: 'Extra Day'
+      label: 'Extra Day'
+    -
+      value: 'Extra Half Day'
+      label: 'Extra Half Day'
   allowed_values_function: ''
 module: options
 locked: false

@@ -15,6 +15,17 @@ user_module_js:
   js:
     js/datepicker.js: {}
 
+confirmation-js:
+  js:
+    js/confirmation_popup.js: {}
+  dependencies:
+   - core/jquery
+   - core/drupal.ajax
+   - core/drupal
+   - core/drupalSettings
+   - core/drupal.dialog
+   - core/jquery.once
+
 drupal_js:
   version: 1.x
   js:

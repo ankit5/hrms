@@ -1,0 +1,14 @@
+{
+  "name": "drupal/user_created_by_field",
+  "type": "drupal-module",
+  "description": "Adds a field to User showing who created the user and creates permissions around that field.",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/user_created_by_field",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/user_created_by_field",
+    "source": "http://cgit.drupalcode.org/user_created_by_field"
+  },
+  "require": { }
+}

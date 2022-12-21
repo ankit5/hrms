@@ -35,6 +35,8 @@
         "drupal/time_picker": "5.3",
         "drupal/toolbar_menu": "2.2",
         "drupal/ultimate_cron": "2.x-dev",
+        "drupal/user_created_by": "2.0",
+        "drupal/user_created_by_field": "1.1",
         "drupal/usernotification": "2.0",
         "drupal/view_custom_table": "2.0",
         "drupal/views_bulk_operations": "4.2",

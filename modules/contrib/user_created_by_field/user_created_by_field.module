@@ -1,0 +1,78 @@
+<?php
+
+/**
+ * @file
+ * Contains user_created_by_field.module.
+ */
+
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Field\FieldDefinitionInterface;
+use Drupal\Core\Field\FieldItemListInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function user_created_by_field_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the user_created_by_field module.
+    case 'help.page.user_created_by_field':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Adds a field to User showing who created the user and creates permissions around that field.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_user_presave().
+ *
+ * @param $account
+ */
+function user_created_by_field_user_presave($account) {
+  // only if the account is new do we auto set the field 
+  if ($account->isNew()) {
+    // Get the current user id
+    $uid = \Drupal::currentUser()->id();
+    // https://stefvanlooveren.me/blog/how-programmatically-update-entity-reference-field-drupal-8
+    $account->set('field_user_created_by_field', ['target_id' => $uid]);
+  }
+}
+
+/**
+ * Implements hook_entity_field_access().
+ *
+ * Purpose: uses the permissions provided by this module to hide the User Created By Field
+ *  on both who can edit and who can view.
+ */
+function user_created_by_field_entity_field_access($operation, FieldDefinitionInterface $field_definition, AccountInterface $account, FieldItemListInterface $items = NULL) {
+  \Drupal::logger('userfield')->notice($field_definition->getName());
+  if ($field_definition->getName() == 'field_user_created_by_field') {
+    \Drupal::logger('userfield')->notice($operation);
+    switch ($operation) {
+      // there is a role based permission to decide who can edit
+      case 'edit':
+        if ($account->hasPermission('edit user created by field')) {
+          return AccessResult::allowed();
+        } else {
+          return AccessResult::forbidden();
+        }
+        break;
+      // only show the field to the roles with permissions
+      case 'view':
+        if ($account->hasPermission('view user created by field')) {
+          return AccessResult::allowed();
+        } else {
+          return AccessResult::forbidden();
+        }
+        break;
+      default:
+        break;
+    }
+  }
+
+  return AccessResult::neutral();
+}

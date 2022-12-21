@@ -5,10 +5,12 @@ dependencies:
   config:
     - core.entity_view_mode.user.compact
     - field.field.user.user.feeds_item
+    - field.field.user.user.field_age
     - field.field.user.user.field_client
     - field.field.user.user.field_employee_id
     - field.field.user.user.field_jobtitle
     - field.field.user.user.field_location
+    - field.field.user.user.field_location2
     - field.field.user.user.field_mobile_phone
     - field.field.user.user.field_name
     - field.field.user.user.field_reporting_manager
@@ -39,10 +41,12 @@ content:
     region: content
 hidden:
   feeds_item: true
+  field_age: true
   field_client: true
   field_employee_id: true
   field_jobtitle: true
   field_location: true
+  field_location2: true
   field_mobile_phone: true
   field_name: true
   field_reporting_manager: true
