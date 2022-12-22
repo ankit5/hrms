@@ -78,7 +78,7 @@ function automail_cron() {
     else {
       $ids = $query->execute();
     }
-    $users = User::loadMultiple($ids);
+    $users = \Drupal\user\Entity\User::loadMultiple($ids);
     
     foreach ($users as $user) {
 $params['account'] = $user;
