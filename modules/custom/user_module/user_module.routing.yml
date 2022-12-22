@@ -26,7 +26,7 @@ user_module.send_mail_approval:
   path: '/admin/approval-send'
   defaults:
     _form: '\Drupal\user_module\Form\ApprovalForm'
-    _title: 'Confirmation This Month Attendance send for approval to your manager'
+    _title: 'Confirmation?'
   requirements:
     _permission: 'employee Access'
 

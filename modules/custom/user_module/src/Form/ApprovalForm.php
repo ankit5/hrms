@@ -34,7 +34,7 @@ class ApprovalForm extends FormBase {
    
     $conn = Database::getConnection();
    
-
+     $form['#prefix'] = '<div><b>Note:Attendance of this month send for approval to your manager</b></div>';
     $form['submit'] = [
       '#type' => 'submit',
       '#value' => 'Send',
@@ -43,7 +43,7 @@ class ApprovalForm extends FormBase {
 
     ];
    // $form['#attached']['library'][] = 'user_module/confirmation-js';
-
+    $form['#cache'] = ['max-age' => 0];
     return $form;
   }
 
@@ -63,8 +63,8 @@ class ApprovalForm extends FormBase {
  $user = \Drupal\user\Entity\User::load($uid);
 
 // print $user->get('field_reporting_manager_email_id')->value;
-print $user->label();
-exit;
+// print $user->label();
+// exit;
 
   $view = Views::getView('my_attendance');
   $dt = \Drupal::time()->getCurrentTime();;
@@ -74,6 +74,8 @@ $last_date =date("m/t/Y", ($dt));
 $month =date("F", ($dt));
 $year =date("Y", ($dt));
 
+$view->setDisplay('data_export_1');
+
   $view->setExposedInput(['field_punch_date_value' => $first_date]);
   $view->setExposedInput(['field_punch_date_value_1' => $last_date]);
 $views_preview = $view->preview('data_export_1');
@@ -81,6 +83,7 @@ $views_preview = $view->preview('data_export_1');
 $display = \Drupal::service('renderer')->renderRoot($views_preview);
 /*print $display;
 exit();*/
+
 $directory = 'public://reports';
 /** @var FileSystemInterface $file_system */
 $file_system = \Drupal::service('file_system');
@@ -103,10 +106,11 @@ $file_name = 'Attendance-'.$user->label().'-'.$month.'-'.$year.'.xlsx';
           /* print $file_path;
  exit();
 */
+
 $mailManager = \Drupal::service('plugin.manager.mail');
      $module = 'user_module';
      $key = 'approval_mail';
-     $params['from'] = \Drupal::currentUser()->getEmail();
+     //$params['from'] = \Drupal::currentUser()->getEmail();
      $to = $user->get('field_reporting_manager_email_id')->value;
      $params['subject'] = 'Approval From Attendance '.$user->label().' '.$month.' '.$year;
      $params['message'] = 'Email with an attachment';
@@ -125,12 +129,12 @@ $mailManager = \Drupal::service('plugin.manager.mail');
      $params['attachments'][] = $attachment;
      $langcode = \Drupal::currentUser()->getPreferredLangcode();
      $send = true;
-    // $result = $mailManager->mail($module, $key, $to, $langcode, $params, NULL, $send);
+     $result = $mailManager->mail($module, $key, $to, $langcode, $params, NULL, $send);
      \Drupal::messenger()->addStatus('Approval Send Succesfully');
        $url = Url::fromUserInput('/my/all-attendance', [], ['absolute' => 'true']);
       $response = new RedirectResponse($url->toString());
       $response->send();
-      exit();
+      //exit();
     
     
   }
