@@ -34,7 +34,7 @@ class ApprovalForm extends FormBase {
    
     $conn = Database::getConnection();
    
-     $form['#prefix'] = '<div><b>Note:Attendance of this month send for approval to your manager</b></div>';
+     $form['#prefix'] = '<div><b>Do you want to send this attendance timesheet to the manager for approval? </b></div><p></p>';
     $form['submit'] = [
       '#type' => 'submit',
       '#value' => 'Send',
@@ -72,6 +72,7 @@ class ApprovalForm extends FormBase {
 $first_date =date("m/01/Y", ($dt));
 $last_date =date("m/t/Y", ($dt));
 $month =date("F", ($dt));
+$month_int =date("m", ($dt));
 $year =date("Y", ($dt));
 
 $view->setDisplay('data_export_1');
@@ -112,9 +113,16 @@ $mailManager = \Drupal::service('plugin.manager.mail');
      $key = 'approval_mail';
      //$params['from'] = \Drupal::currentUser()->getEmail();
      $to = $user->get('field_reporting_manager_email_id')->value;
-     $params['subject'] = 'Attendance Approval From '.$user->label().' '.$month.' '.$year;
-     $params['message'] = 'Email with an attachment';
-     $params['reply-to'] = $user->get('field_reporting_manager_email_id')->value;
+     $params['subject'] = 'Please approve the timesheet of '.$user->label().' | '.$month.' '.$year;
+     $params['message'] = '<p>Dear '.$user->get('field_reporting_manager')->value.'</p>
+
+<p>Please approve the attached timesheet of '.$user->label().' for the month of ..... '.$year.'/'.$month_int.' </p>
+
+<p>Thanks in advance. We really appreciate your kind support!!</p>
+
+<p>Thanks & Regards </p>
+<p>Wildnet Technologies Pvt. Ltd.</p>';
+     $params['reply-to'] = \Drupal::config('system.site')->get('mail');
      $params['cc'] = \Drupal::currentUser()->getEmail();
      //Attaching a file to the email
       $attachment = array(
