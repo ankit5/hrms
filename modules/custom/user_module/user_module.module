@@ -171,10 +171,7 @@ LIMIT 1 OFFSET 0")->fetchObject();
       $form_state->setErrorByName('field_punch_date', t('This Date Attendance Already Added.'));  
     }
 
-    if($form_state->getValue('field_status_type')[0]['value']=='Present' && ($form_state->getValue('field_in_time')[0]['value']=='' || $form_state->getValue('field_out_time')[0]['value']=='')){
-
-     $form_state->setErrorByName('field_in_time', t('Please Select InTime and OutTime'));
-    }
+   
  $current_time = \Drupal::time()->getCurrentTime();
       $month_current = date('m', $current_time);
       $month_select = date('m', strtotime($date));
