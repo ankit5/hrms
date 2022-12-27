@@ -370,7 +370,7 @@ class GinSettings implements ContainerInjectionInterface {
     // Focus color group.
     $form['focus_group'] = [
       '#type' => 'fieldset',
-      '#title' => $this->t('Custom Focus color (BETA) '),
+      '#title' => $this->t('Custom Focus color (BETA)'),
       '#description' => $this->t('Use with caution, values should meet a11y criteria.'),
       '#states' => [
         // Show if met.
