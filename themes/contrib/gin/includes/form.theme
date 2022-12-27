@@ -60,9 +60,9 @@ function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
     // Inject the settings for the dark mode feature.
     $form['gin_theme_settings'] = [
       '#type' => 'details',
-      '#title' => t('Admin theme settings'),
-      '#open' => TRUE,
-      '#weight' => 90,
+      '#title' => t('Theme settings'),
+      '#open' => False,
+      '#weight' => -90,
     ];
 
     /** @var \Drupal\Core\Session\AccountInterface $account */
@@ -70,7 +70,7 @@ function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
     $form['gin_theme_settings']['enable_user_settings'] = [
       '#type' => 'checkbox',
       '#title' => t('Enable overrides'),
-      '#description' => t("Enables default admin theme overrides."),
+      '#description' => t("Enables default theme overrides."),
       '#default_value' => $settings->userOverrideEnabled($account),
       '#weight' => 0,
     ];

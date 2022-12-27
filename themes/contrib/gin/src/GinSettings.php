@@ -414,6 +414,7 @@ class GinSettings implements ContainerInjectionInterface {
     ];
 
     // Toolbar setting.
+     if (!$account) {
     $form['classic_toolbar'] = [
       '#type' => 'radios',
       '#title' => $this->t('Navigation (Drupal Toolbar)'),
@@ -427,6 +428,7 @@ class GinSettings implements ContainerInjectionInterface {
         '_gin_toolbar_radios',
       ],
     ];
+  }
 
     // Show secondary toolbar in Frontend.
     if (!$account) {
@@ -439,6 +441,7 @@ class GinSettings implements ContainerInjectionInterface {
     }
 
     // Layout density setting.
+     if (!$account) {
     $form['layout_density'] = [
       '#type' => 'radios',
       '#title' => $this->t('Layout density') . $beta_label,
@@ -450,14 +453,17 @@ class GinSettings implements ContainerInjectionInterface {
         'small' => $this->t('Narrow'),
       ],
     ];
+  }
 
     // Description toggle.
+   if (!$account) {
     $form['show_description_toggle'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Enable form description toggle'),
       '#description' => $this->t('Show a help icon to show/hide form descriptions on content forms.'),
       '#default_value' => $account ? $this->get('show_description_toggle', $account) : $this->getDefault('show_description_toggle'),
     ];
+  }
 
     if (!$account) {
       foreach ($form as $key => $element) {
