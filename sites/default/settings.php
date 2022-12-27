@@ -544,6 +544,7 @@ $settings['file_public_path'] = 'sites/default/files';
  *
  * @see \Drupal\Component\FileSystem\FileSystem::getOsTemporaryDirectory()
  */
+ //$settings['file_temp_path'] = 'D:\Projects\drupal\hrms\hrms\tmp';
  $settings['file_temp_path'] = '/tmp';
 
 /**
