@@ -34,7 +34,7 @@ class ApprovalForm extends FormBase {
    
     $conn = Database::getConnection();
    
-     $form['#prefix'] = '<div><b>Do you want to send this attendance timesheet to the manager for approval? </b></div><p></p>';
+     $form['#prefix'] = '<div><b>Do you want to send this month attendance timesheet to the manager for approval? </b></div><p></p>';
     $form['submit'] = [
       '#type' => 'submit',
       '#value' => 'Send',
