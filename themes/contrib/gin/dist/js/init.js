@@ -25,5 +25,7 @@
   }else{
     if(!localStorage.getItem("Drupal.gin.toolbarExpanded"))
     localStorage.setItem("Drupal.gin.toolbarExpanded", true);
+   if(!localStorage.getItem("Drupal.gin.sidebarExpanded.desktop"))
+    localStorage.setItem("Drupal.gin.sidebarExpanded.desktop", false);
   }
 })();
