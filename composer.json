@@ -16,6 +16,7 @@
     ],
     "require": {
         "composer/installers": "^1.9",
+        "drupal/account_field_split": "^2.0",
         "drupal/admin_toolbar": "3.3",
         "drupal/better_exposed_filters": "5.2",
         "drupal/conditional_fields": "^4.0@alpha",
@@ -25,6 +26,7 @@
         "drupal/core-vendor-hardening": "^9.4",
         "drupal/feeds": "^3.0@beta",
         "drupal/feeds_tamper": "^2.0@beta",
+        "drupal/field_group_bootstrap": "3.0",
         "drupal/fontawesome": "2.24",
         "drupal/fontawesome_menu_icons": "1.9",
         "drupal/gin": "^3.0@rc",
