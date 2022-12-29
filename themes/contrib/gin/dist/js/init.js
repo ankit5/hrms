@@ -22,5 +22,8 @@
       const scriptTag = document.querySelector("script");
       scriptTag.parentNode.insertBefore(style, scriptTag);
     } else document.getElementsByClassName(className).length > 0 && document.getElementsByClassName(className)[0].remove();
+  }else{
+    if(!localStorage.getItem("Drupal.gin.toolbarExpanded"))
+    localStorage.setItem("Drupal.gin.toolbarExpanded", true);
   }
 })();

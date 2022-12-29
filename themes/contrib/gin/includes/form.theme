@@ -62,12 +62,14 @@ function gin_form_user_form_alter(&$form, FormStateInterface $form_state) {
       '#type' => 'details',
       '#title' => t('Theme settings'),
       '#open' => False,
-      '#weight' => -90,
+      '#weight' => 9,
+      '#group' => 'group_multi_tabs',
     ];
-    
+
 
     /** @var \Drupal\Core\Session\AccountInterface $account */
     $account = $form_state->getBuildInfo()['callback_object']->getEntity();
+   
     $form['gin_theme_settings']['enable_user_settings'] = [
       '#type' => 'checkbox',
       '#title' => t('Enable overrides'),

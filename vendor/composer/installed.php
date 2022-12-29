@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '949e175d107067567ca29f17b62b826314c26ace',
+        'reference' => 'd29547fef7d6f4c4dc43810edab191379cc456db',
         'name' => 'drupal/legacy-project',
         'dev' => true,
     ),
@@ -161,6 +161,17 @@
             'install_path' => __DIR__ . '/../doctrine/reflection',
             'aliases' => array(),
             'reference' => '1034e5e71f89978b80f9c1570e7226f6c3b9b6fb',
+            'dev_requirement' => false,
+        ),
+        'drupal/account_field_split' => array(
+            'pretty_version' => 'dev-2.x',
+            'version' => 'dev-2.x',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../modules/contrib/account_field_split',
+            'aliases' => array(
+                0 => '2.x-dev',
+            ),
+            'reference' => '5c69a0275a71c3b6cac2f10fbb9b31cec33d46da',
             'dev_requirement' => false,
         ),
         'drupal/admin_toolbar' => array(
@@ -414,6 +425,26 @@
             'reference' => '8.x-2.0-beta2',
             'dev_requirement' => false,
         ),
+        'drupal/field_group' => array(
+            'pretty_version' => 'dev-3.x',
+            'version' => 'dev-3.x',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../modules/contrib/field_group',
+            'aliases' => array(
+                0 => '3.x-dev',
+            ),
+            'reference' => 'badc69d77745143e98172a3fa4829eb4e19baae5',
+            'dev_requirement' => false,
+        ),
+        'drupal/field_group_bootstrap' => array(
+            'pretty_version' => '3.0.0',
+            'version' => '3.0.0.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../modules/contrib/field_group_bootstrap',
+            'aliases' => array(),
+            'reference' => '3.0.0',
+            'dev_requirement' => false,
+        ),
         'drupal/fontawesome' => array(
             'pretty_version' => '2.24.0',
             'version' => '2.24.0.0',
@@ -501,7 +532,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '949e175d107067567ca29f17b62b826314c26ace',
+            'reference' => 'd29547fef7d6f4c4dc43810edab191379cc456db',
             'dev_requirement' => false,
         ),
         'drupal/mailsystem' => array(
