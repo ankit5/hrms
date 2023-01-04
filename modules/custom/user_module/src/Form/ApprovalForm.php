@@ -34,7 +34,7 @@ class ApprovalForm extends FormBase {
    
     $conn = Database::getConnection();
    
-     $form['#prefix'] = '<div><b>Do you want to send this month attendance timesheet to the manager for approval? </b></div><p></p>';
+     $form['#prefix'] = '<div><b>Do you want to send this attendance timesheet to the manager for approval? </b></div><p></p>';
     $form['submit'] = [
       '#type' => 'submit',
       '#value' => 'Send',
@@ -67,12 +67,15 @@ class ApprovalForm extends FormBase {
 // exit;
 
   $view = Views::getView('my_attendance');
-  $dt = \Drupal::time()->getCurrentTime();;
+  $dt = \Drupal::time()->getCurrentTime();
 //echo 'First day : '. date("Y-m-01", ($dt)).' - Last day : '. date("Y-m-t", ($dt)); 
-$first_date =date("m/01/Y", ($dt));
-$last_date =date("m/t/Y", ($dt));
-$month =date("F", ($dt));
-$month_int =date("m", ($dt));
+   $field_punch_date_value = \Drupal::request()->query->get('field_punch_date_value');
+   $field_punch_date_value_1 = \Drupal::request()->query->get('field_punch_date_value_1');
+$first_date =($field_punch_date_value)?$field_punch_date_value:date("m/01/Y", ($dt));
+$last_date =($field_punch_date_value_1)?$field_punch_date_value_1:date("m/t/Y", ($dt));
+$month =date("F", strtotime($first_date));
+
+$month_int =date("m", strtotime($first_date));
 $year =date("Y", ($dt));
 
 $view->setDisplay('data_export_1');
